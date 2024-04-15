@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício HTML</title>
+
+    <style>
+        #conteudo {
+            padding: 30px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Exercício HTML</h1>
+    </header>
+    <nav>
+        <a href="exercicios/teste.html">00 - Teste</a> | 
+        <a href="exercicios/1-tagParaTexto.html">01 - Texto 1</a> | 
+        <a href="exercicios/2-tagParaTexto.html">02 - Texto 2</a> | 
+        <a href="exercicios/3-listas.html">03 - Listas</a> | 
+        <a href="exercicios/4-listasAninhadas.html">04 - Listas Aninhadas</a> | 
+    </nav>
+    <section id="conteudo"></section>
+    <footer>
+        <p>Curso de web moderno</p>
+    </footer>
+
+
+    <!--Codigo ajax para o conteudo de outra página apareça no index-->
+    <script>
+        document.querySelectorAll("a").forEach(link => {
+            const conteudo = document.getElementById("conteudo")
+            
+            link.onclick = function(e) {
+                e.preventDefault()
+                
+                fetch(link.href)
+                .then(resp => resp.text())
+                .then(html => conteudo.innerHTML =html)
+            }
+        })
+    </script>
+</body>
+</html>
